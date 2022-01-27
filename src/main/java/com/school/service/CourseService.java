@@ -2,7 +2,7 @@ package com.school.service;
 
 import com.school.entity.Cours;
 
-public interface CoursesService {
+public interface CourseService {
 
      Cours createCours(Cours save);
 

@@ -1,8 +1,7 @@
 package com.school.controller;
 
 import com.school.entity.Cours;
-import com.school.service.CoursesService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.school.service.CourseService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -14,11 +13,11 @@ import org.springframework.web.bind.annotation.*;
         produces = MediaType.APPLICATION_JSON_VALUE,
         consumes = MediaType.APPLICATION_JSON_VALUE
 )
-public class CoursesController {
+public class CourseController {
 
-    private final CoursesService coursesService;
+    private final CourseService coursesService;
 
-    public CoursesController(CoursesService coursesService) {
+    public CourseController(CourseService coursesService) {
         this.coursesService = coursesService;
     }
 

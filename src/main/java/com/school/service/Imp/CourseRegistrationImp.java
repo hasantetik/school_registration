@@ -5,10 +5,8 @@ import com.school.dto.CourseRegistrationDto;
 import com.school.entity.CourseRegistration;
 import com.school.exception.CourseRegistrationException;
 import com.school.repository.CourseRegistrationRepository;
-import com.school.repository.CoursesRepository;
-import com.school.repository.StudentRepositroy;
 import com.school.service.CourseRegistrationService;
-import com.school.service.CoursesService;
+import com.school.service.CourseService;
 import com.school.service.StudentService;
 import org.springframework.stereotype.Service;
 
@@ -17,13 +15,13 @@ import java.util.List;
 @Service
 public class CourseRegistrationImp implements CourseRegistrationService {
 
-    private final CoursesService coursesService;
+    private final CourseService coursesService;
 
     private final CourseRegistrationRepository courseRegistrationRepository;
 
     private final StudentService studentService;
 
-    public CourseRegistrationImp(CoursesService coursesService,CourseRegistrationRepository courseRegistrationRepository, StudentService studentService) {
+    public CourseRegistrationImp(CourseService coursesService, CourseRegistrationRepository courseRegistrationRepository, StudentService studentService) {
         this.coursesService = coursesService;
         this.courseRegistrationRepository = courseRegistrationRepository;
         this.studentService = studentService;
@@ -76,13 +74,12 @@ public class CourseRegistrationImp implements CourseRegistrationService {
         return courseRegistrationRepository.countStudentByStudentId(studentId);
     }
 
-    public String registerCourseValidate(CourseRegistrationDto courseRegistrationDto){
+    public void registerCourseValidate(CourseRegistrationDto courseRegistrationDto){
         if(countCourseByCourseId(courseRegistrationDto.getCourseId())>=50){
             throw new CourseRegistrationException("course is full.");
         }
         else if(countStudentByStudentId(courseRegistrationDto.getStudentId())>=5){
             throw new CourseRegistrationException("Your right to take the course has expired");
         }
-        return "";
     }
 }

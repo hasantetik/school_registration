@@ -3,16 +3,16 @@ package com.school.service.Imp;
 import com.school.entity.Cours;
 import com.school.exception.EntityNotFoundException;
 import com.school.repository.CoursesRepository;
-import com.school.service.CoursesService;
+import com.school.service.CourseService;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CoursesServiceImp implements CoursesService {
+public class CourseServiceImp implements CourseService {
 
     private final CoursesRepository coursesRepository;
 
-    public CoursesServiceImp(CoursesRepository coursesRepository) {
+    public CourseServiceImp(CoursesRepository coursesRepository) {
         this.coursesRepository = coursesRepository;
     }
 
