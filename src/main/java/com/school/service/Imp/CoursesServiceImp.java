@@ -33,7 +33,6 @@ public class CoursesServiceImp implements CoursesService {
                 .orElseThrow(() -> new EntityNotFoundException("Course Entity not found"));
         existingCours.setCoursName(cours.getCoursName());
         coursesRepository.saveAndFlush(existingCours);
-
         return null;
     }
 
@@ -42,15 +41,12 @@ public class CoursesServiceImp implements CoursesService {
         Cours existingCours = coursesRepository.findById(coursesId)
                 .orElseThrow(() -> new EntityNotFoundException("Course Entity not found"));
         coursesRepository.delete(existingCours);
-
         return existingCours;
     }
 
     @Override
     public Cours getCours(Long coursesId) {
-        Cours existingCours = coursesRepository.findById(coursesId)
+        return coursesRepository.findById(coursesId)
                 .orElseThrow(() -> new EntityNotFoundException("Course Entity not found"));
-
-        return existingCours;
     }
 }

@@ -43,9 +43,8 @@ public class CourseRegistrationImp implements CourseRegistrationService {
     public List<String> getNonStudentCourses() {
         List<String> removeList =courseRegistrationRepository.getCoursCount();
         List<String> courses = courseRegistrationRepository.getNonStudentCourses();
-
-        for(int i =0;i<removeList.size();i++){
-            courses.remove(removeList.get(i));
+        for (String s : removeList) {
+            courses.remove(s);
         }
         return courses;
     }
@@ -54,9 +53,8 @@ public class CourseRegistrationImp implements CourseRegistrationService {
     public List<String> getNonCoursesStudents() {
         List<String> removeList = courseRegistrationRepository.getStudentCount();
         List<String> students = courseRegistrationRepository.getNonCoursesStudents();
-
-        for (int i = 0;i<removeList.size();i++){
-            students.remove(removeList.get(i));
+        for (String s : removeList) {
+            students.remove(s);
         }
         return students;
     }
@@ -67,18 +65,15 @@ public class CourseRegistrationImp implements CourseRegistrationService {
         CourseRegistration existingCourseRegistration = new CourseRegistration();
         existingCourseRegistration.setCours(coursesService.getCours(courseRegistrationDto.getCourseId()));
         existingCourseRegistration.setStudent(studentService.getStudent(courseRegistrationDto.getStudentId()));
-
         return ""+courseRegistrationRepository.save(existingCourseRegistration);
     }
 
     public Long countCourseByCourseId(Long courseId){
-        Long count = courseRegistrationRepository.countCourseByCourseId(courseId);
-        return count;
+        return courseRegistrationRepository.countCourseByCourseId(courseId);
     }
 
     public Long countStudentByStudentId(Long studentId){
-        Long count = courseRegistrationRepository.countStudentByStudentId(studentId);
-        return count;
+        return courseRegistrationRepository.countStudentByStudentId(studentId);
     }
 
     public String registerCourseValidate(CourseRegistrationDto courseRegistrationDto){

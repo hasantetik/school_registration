@@ -14,7 +14,6 @@ public class GlobalException {
         errorObject.setStatus(HttpStatus.NOT_FOUND.value());
         errorObject.setMessage(exception.getMessage());
         errorObject.setTimestamp(System.currentTimeMillis());
-
         return new ResponseEntity<>(errorObject, HttpStatus.NOT_FOUND);
     }
 
@@ -24,7 +23,6 @@ public class GlobalException {
         errorObject.setStatus(HttpStatus.ALREADY_REPORTED.value());
         errorObject.setMessage(exception.getMessage());
         errorObject.setTimestamp(System.currentTimeMillis());
-
         return new ResponseEntity<>(errorObject, HttpStatus.ALREADY_REPORTED);
     }
 
@@ -34,7 +32,6 @@ public class GlobalException {
         errorObject.setStatus(HttpStatus.ALREADY_REPORTED.value());
         errorObject.setMessage(exception.getMessage());
         errorObject.setTimestamp(System.currentTimeMillis());
-
         return new ResponseEntity<>(errorObject, HttpStatus.ALREADY_REPORTED);
     }
 
@@ -44,7 +41,6 @@ public class GlobalException {
         errorObject.setStatus(HttpStatus.BAD_REQUEST.value());
         errorObject.setMessage(exception.getMessage());
         errorObject.setTimestamp(System.currentTimeMillis());
-
         return new ResponseEntity<>(errorObject, HttpStatus.BAD_REQUEST);
     }
 }

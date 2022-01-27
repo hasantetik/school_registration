@@ -39,7 +39,6 @@ public class StudentServiceImp implements StudentService {
         existingStudent.setFirstName(student.getFirstName());
         existingStudent.setLastName(student.getLastName());
         existingStudent.setNumber(student.getNumber());
-
         return studentRepositroy.saveAndFlush(existingStudent);
     }
 
@@ -48,15 +47,12 @@ public class StudentServiceImp implements StudentService {
         Student existingStudent = studentRepositroy.findById(studentId)
                 .orElseThrow(() -> new EntityNotFoundException("Student Entity not found"));
         studentRepositroy.delete(existingStudent);
-
         return existingStudent;
     }
 
     @Override
     public Student getStudent(Long studentId) {
-        Student existingStudent = studentRepositroy.findById(studentId)
+        return studentRepositroy.findById(studentId)
                 .orElseThrow(() -> new EntityNotFoundException("Student Entity not found"));
-
-        return existingStudent;
     }
 }
